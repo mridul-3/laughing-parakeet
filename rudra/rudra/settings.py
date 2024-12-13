@@ -25,7 +25,44 @@ SECRET_KEY = 'django-insecure-79)tksmzw43d)13+ea(z5@hia7-yw7q67lq=lauiu2vq+6m)f0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+
+# CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
+
+# Application definition
+CORS_ALLOWED_ORIGINS = ["http://localhost:4200", "http://127.0.0.1:4200",
+                        "http://157.245.99.8:4200", "http://127.0.0.1:3000",
+                        "http://localhost:3000"]
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = (
+    "127.0.0.1:4200", "localhost:4200", "http://157.245.99.8:4200",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000")
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT')
+CORS_ALLOW_HEADERS = (
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+    'access_key',
+    'secret_key',
+    'Access-Control-Allow-Origin',
+    'Access-Control-Allow-Credentials')
 
 
 # Application definition
@@ -37,7 +74,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "main"
+    "main",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -48,6 +86,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'rudra.urls'

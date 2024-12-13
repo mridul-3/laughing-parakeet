@@ -1,0 +1,160 @@
+/* Base container styling */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background: linear-gradient(to bottom, #d9e7ff, #b0ceff); /* Optional gradient background */
+}
+
+/* Title styling */
+.title {
+  margin: 0;
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Description styling */
+.description {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  color: #555;
+  text-align: center;
+  line-height: 1.6;
+}
+
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%; /* Set card width to 90% of the container */
+  max-width: 500px; /* Add a maximum width for better responsiveness */
+  padding: 20px;
+  text-align: center;
+}
+
+.card h1 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.card p {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.card .options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Add spacing between options */
+}
+
+/* .card button {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+} */
+
+/* .card button:hover {
+  background-color: #e0e0e0;
+} */
+
+
+/* .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+} */
+
+/* Input fields */
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+  transition: border-color 0.3s;
+}
+
+.input:focus {
+  border-color: #0070f3;
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 112, 243, 0.4);
+}
+
+/* Buttons */
+/* .button {
+  background-color: #0070f3;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.button:hover {
+  background-color: #005bb5;
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(1px);
+} */
+
+/* Question section */
+.quiz-question {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.quiz-options button {
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0.5rem 0;
+  border: 1px solid #ddd;
+  padding: 0.75rem;
+  text-align: center;
+  border-radius: 5px;
+  width: 100%;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.quiz-options button:hover {
+  background-color: #0070f3;
+  color: white;
+  border-color: #0070f3;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+    width: 100%;
+  }
+
+  .input {
+    font-size: 0.9rem;
+  }
+
+  .button {
+    font-size: 0.9rem;
+  }
+}

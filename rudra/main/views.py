@@ -16,7 +16,7 @@ def create_quiz(request):
             data = json.loads(request.body)
             quiz = Quiz.objects.create(title=data['title'], description=data['description'])
 
-            no_of_questions = data['no_of_questions']
+            no_of_questions = int(data['no_of_questions'])
             # randomly select questions from the database
             questions = Question.objects.all().order_by('?')[:no_of_questions]
             for question in questions:
@@ -49,7 +49,7 @@ def start_quiz(request):
             first_question = QuizSessionProgress.objects.get(session=session, order=1)
             question = first_question.question
             options = question.options
-            return JsonResponse({"question": {'question': question.question, 'options': options, "question_id": question.ques_id,
+            return JsonResponse({"question": {'question': question.question, 'options': options, "ques_id": question.ques_id,
                                   "session_id": session.session_id}}, status=200)
         return JsonResponse({'error': 'Invalid request'}, status=400)
     except Exception as e:
@@ -60,6 +60,7 @@ def submit_answer(request):
     try:
         if request.method == 'POST':
             data = json.loads(request.body)
+            print(data)
             question_id = data['ques_id']
             selected_option = data['selected_option']
             session_id = data['session_id']
@@ -85,9 +86,10 @@ def submit_answer(request):
                 return JsonResponse({'message': 'Quiz completed successfully', 'score': session.score}, status=200)
 
             next_question_data = {
-                "question_id": next_question.question.ques_id,
+                "ques_id": next_question.question.ques_id,
                 "question": next_question.question.question,
                 "options": next_question.question.options,
+                "session_id": session_id
             }
 
             return JsonResponse({'message': 'Answer submitted successfully', "question": next_question_data}, status=200)
